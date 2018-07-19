@@ -1,0 +1,10 @@
+#install packages required for the deployment
+
+- name: Install required packages
+  apt: name={{item}} state=latest
+  become: yes
+  with_items:
+    - python-pip
+    - python-dev
+    - libpq-dev
+    - virtualenv
