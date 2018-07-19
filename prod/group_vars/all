@@ -39,3 +39,11 @@ django_settings_module: biojs.settings
 database_url: '{{ db_url }}'
 
 virtualenv_python_version: python
+
+# Gunicorn Vars
+
+base_project_name: biojs
+application_log_dir: "{{ venv_dir }}/logs"
+application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
+gunicorn_wsgi_module: "{{ base_project_name }}.wsgi"
+gunicorn_settings_module: "{{ base_project_name }}.settings"

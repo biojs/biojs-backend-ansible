@@ -1,0 +1,19 @@
+- name: Create the Gunicorn script file
+  template: src=gunicorn_start
+            dest={{ venv_dir }}/bin/gunicorn_start
+            owner={{ deployer_user }}
+            group={{ deployer_group }}
+            mode=0755
+            backup=yes
+  tags: deploy
+
+- name: Create the application log folder
+  file: path={{ application_log_dir }}
+        mode=0774
+        state=directory
+
+- name: Create (or retain) the application log file
+  copy: content=""
+        dest={{ application_log_file }}
+        mode=0664
+        force=no
