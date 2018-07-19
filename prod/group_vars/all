@@ -47,3 +47,11 @@ application_log_dir: "{{ venv_dir }}/logs"
 application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
 gunicorn_wsgi_module: "{{ base_project_name }}.wsgi"
 gunicorn_settings_module: "{{ base_project_name }}.settings"
+
+# Nginx settings.
+nginx_app_name: biojs_backend
+nginx_access_log_file: "{{ application_log_dir }}/nginx_access.log"
+nginx_error_log_file: "{{ application_log_dir }}/nginx_error.log"
+nginx_static_dir: "{{ app_dir }}/static/"
+nginx_media_dir: "{{ app_dir }}/media/"
+hostname: "{{ server_ip }}"     # domain name if required
