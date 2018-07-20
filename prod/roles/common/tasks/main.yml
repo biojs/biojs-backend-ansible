@@ -5,3 +5,4 @@
 - include: 02_git.yml
 - include: 03_postgres.yml
 - include: 04_dependencies.yml
+- include: 06_gunicorn.yml
