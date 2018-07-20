@@ -47,3 +47,5 @@ application_log_dir: "{{ venv_dir }}/logs"
 application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
 gunicorn_wsgi_module: "{{ base_project_name }}.wsgi"
 gunicorn_settings_module: "{{ base_project_name }}.settings"
+gunicorn_user: "{{ deployer_user }}"    # Can be changed
+gunicorn_group: "{{ deployer_group }}"  # Can be changed
