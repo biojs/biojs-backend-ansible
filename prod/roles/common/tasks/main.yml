@@ -5,6 +5,7 @@
 - include: 02_git.yml
 - include: 03_postgres.yml
 - include: 04_dependencies.yml
+- include: 05_migrations.yml
 - include: 06_gunicorn.yml
 - include: 07_nginx.yml
 - include: 08_supervisorctl.yml

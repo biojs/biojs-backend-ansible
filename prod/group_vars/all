@@ -58,3 +58,8 @@ nginx_static_dir: "{{ app_dir }}/static/"
 nginx_media_dir: "{{ app_dir }}/media/"
 hostname: "{{ server_ip }}"     # domain name if required
 
+# Database configuration vars
+
+django_project_name: biojs  # Name of base project
+GITHUB_CLIENT_ID: 0193c6f6aaea3c255d66
+GITHUB_CLIENT_SECRET: 3a8c8182d9ac8d58f145d57cec7d8761d6d2dcf7
