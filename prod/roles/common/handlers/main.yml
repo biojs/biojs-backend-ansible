@@ -5,3 +5,7 @@
 - name: restart nginx
   service: name=nginx state=restarted enabled=yes
   become: yes
+
+- name: restart application
+  supervisorctl: name={{ application_name }} state=restarted
+  become: yes
