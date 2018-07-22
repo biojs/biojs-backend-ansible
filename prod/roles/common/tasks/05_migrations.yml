@@ -1,0 +1,18 @@
+# Run migrations for database after creation of required config file
+
+- name: Write database conf file
+  template: src=db_config dest="{{ app_dir }}/{{ django_project_name }}/config.py"
+  become: yes
+  notify:
+    - restart nginx
+    - restart application
+
+- name: Run Django database migrations
+  django_manage:
+    command: migrate
+    app_path: "{{ app_dir }}"
+    virtualenv: "{{ venv_dir }}"
+  tags: django.migrate
+  notify:
+    - restart nginx
+    - restart application
