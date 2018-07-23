@@ -9,6 +9,14 @@
   become: yes
   notify:
     - restart nginx
+  when: not (nginx_use_letsencrypt is defined and nginx_use_letsencrypt)
+
+- name: Write nginx conf file
+  template: src=nginx_ssl.conf dest=/etc/nginx/sites-available/{{ hostname }}
+  become: yes
+  notify:
+    - restart nginx
+  when: nginx_use_letsencrypt is defined and nginx_use_letsencrypt
 
 - name: Ensure that the application site is enabled
   file: src=/etc/nginx/sites-available/{{ hostname }}
