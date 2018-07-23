@@ -57,6 +57,7 @@ nginx_error_log_file: "{{ application_log_dir }}/nginx_error.log"
 nginx_static_dir: "{{ app_dir }}/static/"
 nginx_media_dir: "{{ app_dir }}/media/"
 hostname: "{{ server_ip }}"     # domain name if required
+secondary_hostname: ""          # www.hostname in case if hostname is a domain and not an IP
 
 # Database configuration vars
 
