@@ -64,3 +64,15 @@ secondary_hostname: ""          # www.hostname in case if hostname is a domain a
 django_project_name: biojs  # Name of base project
 GITHUB_CLIENT_ID: GITHUB_CLIENT_ID
 GITHUB_CLIENT_SECRET: GITHUB_CLIENT_SECRET
+
+# Certbot Variables
+
+nginx_use_letsencrypt: no   # Yes if SSL certificate is required.
+nginx_strong_dh_group: no   # Yes recommended with SSL
+certbot_auto_renew: yes
+certbot_admin_email: admin@example.com  # Email for certificate authentication
+certbot_script: /opt/certbot-auto
+certbot_output_dir: "/etc/letsencrypt/live/{{ hostname }}"
+letsencrypt_dir: "/etc/letsencrypt/live/{{ hostname }}"
+letsencrypt_cert_filename: fullchain.pem
+letsencrypt_privkey_filename: privkey.pem
