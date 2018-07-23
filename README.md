@@ -35,3 +35,10 @@ $ vim deploy_prod.sh
 ``` bash
 $ sh deploy_prod.sh
 ```
+
+## Using the option to use add SSL encryption
+
+This playbook gives an option to the users to automate the addition of an SSL certificate, which can be specified in the prod/group_vars/all file. The certificate authorizing agency is Let's Encrypt. It is also assumed that DNS records for the domains are already setup for the respective server, and the domains are updated in the "hostname" and "secondary_hostname" variables.  
+
+For more information about Let's Encrypt, click [here](https://letsencrypt.org/getting-started/).  
+To go through the step's for manually setting up an SSL certificate with nginx using Let's Encrypt, follow [this](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04).
