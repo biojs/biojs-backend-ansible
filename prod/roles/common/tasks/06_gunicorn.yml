@@ -6,14 +6,17 @@
             mode=0755
             backup=yes
   tags: deploy
+  become: yes
 
 - name: Create the application log folder
   file: path={{ application_log_dir }}
         mode=0774
         state=directory
+  become: yes
 
 - name: Create (or retain) the application log file
   copy: content=""
         dest={{ application_log_file }}
         mode=0664
         force=no
+  become: yes
