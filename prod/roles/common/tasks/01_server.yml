@@ -4,7 +4,6 @@
   apt: name={{item}} state=latest
   become: yes
   with_items:
-    - python
     - python-pip
     - python-dev
     - libpq-dev
