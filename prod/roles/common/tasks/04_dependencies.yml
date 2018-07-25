@@ -8,6 +8,7 @@
   pip: virtualenv={{ venv_dir }} name={{ item }}
   with_items:
     - gunicorn
+    - psycopg2
 
 - name: Install packages required by the Django app inside virtualenv
   pip: virtualenv={{ venv_dir }} requirements={{ requirements_file }}
