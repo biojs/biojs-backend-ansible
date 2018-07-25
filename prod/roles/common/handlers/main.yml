@@ -7,5 +7,5 @@
   become: yes
 
 - name: restart application
-  supervisorctl: name={{ application_name }} state=restarted
+  supervisorctl: name={{ app_name }} state=restarted
   become: yes
