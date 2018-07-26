@@ -13,7 +13,7 @@ ssh_dir: ~/.ssh
 code_repository_url: https://github.com/biojs/biojs-backend
 
 # App Directory
-app_dir: /root/live/biojs-backend
+app_dir: /home/<Username>/live/biojs-backend    # recommended
 
 # DB Configuration
 db_url: postgresql://{{deployer_user}}:{{db_password}}@localhost/{{app_name}}
@@ -22,7 +22,7 @@ db_name: "biojsmain"
 db_user: "{{ deployer_user }}"
 
 # Application Dependencies Setup
-venv_dir: '/root/live/biojsenv'
+venv_dir: '/home/<Username>/live/biojsenv'  # recommended
 venv_python: '{{ venv_dir }}/bin/python'
 requirements_file: "{{ app_dir }}/requirements.txt"
 # Remote Server Details
@@ -79,5 +79,5 @@ letsencrypt_privkey_filename: privkey.pem
 
 # Front End variables
 
-frontend_dir: /root/live/biojs-frontend
+frontend_dir: /home/<Username>/live/biojs-frontend  # recommended
 frontend_repository_url: https://github.com/biojs/biojs-frontend
