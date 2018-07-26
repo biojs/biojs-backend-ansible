@@ -76,3 +76,8 @@ certbot_output_dir: "/etc/letsencrypt/live/{{ hostname }}"
 letsencrypt_dir: "/etc/letsencrypt/live/{{ hostname }}"
 letsencrypt_cert_filename: fullchain.pem
 letsencrypt_privkey_filename: privkey.pem
+
+# Front End variables
+
+frontend_dir: /root/live/biojs-frontend
+frontend_repository_url: https://github.com/biojs/biojs-frontend
