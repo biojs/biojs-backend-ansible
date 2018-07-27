@@ -1,0 +1,21 @@
+# Clone frontend code repository, install npm dependencies
+
+- name: Clone or pull the latest code
+  git: repo={{ frontend_repository_url }}
+        dest={{ frontend_dir }}
+
+- name: Add the NodeSource APT repository
+  shell: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
+- name: Install Node.js from the distributions repository
+  apt: nodejs
+  become: yes
+
+- name: Install packages based on package.json.
+  npm:
+    path: "{{ frontend_dir }}"
+
+- name: npm build
+  command: npm run build
+  args:
+    chdir: "{{ frontend_dir }}"

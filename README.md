@@ -55,7 +55,7 @@ $ sudo apt install python
 5. Changes in the prod/group_vars/all file:
 - deployer_user and deployer_group : The user and group which you use to log into the server.
 - ssh_dir : The **local** directory where you store your public and private ssh-keys are present.
-- app_dir : The location where you want the project to be present. Recommended : /home/<Username>/live/biojs-backend
+- app_dir : The location where you want the project to be present. Recommended : /home/<Username>/live/biojs-backend(Including the name of desired directory. In the example, the name is biojs-backend)
 - db configuration : Just change the db_password and db_name, if required.
 - venv_dir : Location of the virtualenv. Recommended : /home/<Username>/live/biojsenv
 - server_ip : IP of the server
@@ -64,3 +64,4 @@ $ sudo apt install python
 - GITHUB_CLIENT_ID and SECRET : Generated Github API credentials for accessing 5000 Github API calls/hour.
 - nginx_use_letsencrypt, nginx_strong_dh_group : Yes for SSL certificate. **Note: A domain is necessary for this.**(This is in its initial stage.)
 - certbot_admin_email : Email of the user/organization on which the SSL certificate will be authored.
+- frontend_dir : Location of the front-end directory. Recommended : /home/<Username>/live/biojs-frontend(Including the name of desired directory. In the example, the name is biojs-frontend)

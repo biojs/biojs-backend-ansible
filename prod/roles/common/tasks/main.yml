@@ -7,6 +7,7 @@
 - include: 04_dependencies.yml
 - include: 05_migrations.yml
 - include: 06_gunicorn.yml
+- include: 06_01_frontend.yml
 - include: 07_nginx.yml
 - include: 08_supervisorctl.yml
 # - include: 09_certbot.yml
