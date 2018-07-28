@@ -3,19 +3,19 @@
 - name: Clone or pull the latest code
   git: repo={{ frontend_repository_url }}
         dest={{ frontend_dir }}
-
-- name: Add the NodeSource APT repository
-  shell: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  become: yes
 
 - name: Install Node.js from the distributions repository
-  apt: nodejs
+  apt: name=nodejs state=latest
   become: yes
 
 - name: Install packages based on package.json.
   npm:
     path: "{{ frontend_dir }}"
+  become: yes
 
 - name: npm build
   command: npm run build
   args:
     chdir: "{{ frontend_dir }}"
+  become: yes
