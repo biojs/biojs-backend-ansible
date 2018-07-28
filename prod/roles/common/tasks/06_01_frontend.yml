@@ -5,6 +5,14 @@
         dest={{ frontend_dir }}
   become: yes
 
+- name: Run the script
+  shell: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  become: yes
+
+- name: Update
+  command: apt-get update
+  become: yes
+
 - name: Install Node.js from the distributions repository
   apt: name=nodejs state=latest
   become: yes
