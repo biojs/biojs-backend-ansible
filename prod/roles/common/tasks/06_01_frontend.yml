@@ -5,6 +5,14 @@
         dest={{ frontend_dir }}
   become: yes
 
+- name: Create DB_Config.js file
+  template: src=JS_DB_Config dest="{{ frontend_dir }}/src/DB_CONFIG.js"
+  when: not (nginx_use_letsencrypt is defined and nginx_use_letsencrypt)
+
+- name: Create DB_Config.js file (SSL)
+  template: src=JS_DB_Config_ssl dest="{{ frontend_dir }}/src/DB_CONFIG.js"
+  when: nginx_use_letsencrypt is defined and nginx_use_letsencrypt
+
 - name: Run the script
   shell: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   become: yes
