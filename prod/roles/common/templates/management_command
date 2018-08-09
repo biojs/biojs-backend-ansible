@@ -1,0 +1,4 @@
+#!/bin/bash
+cd {{ app_dir }}
+source {{ venv_dir }}/bin/activate
+python manage.py updatecomponents
