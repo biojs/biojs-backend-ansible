@@ -1,0 +1,21 @@
+# Setup the cron job for timely updating the database
+
+- name: Create the application log folder
+  file: path={{ management_command_dir }}
+        mode=0774
+        state=directory
+
+- name: Create the shell script file to run the management command
+  template: src=management_command
+            dest={{ management_command_dir }}/management_command_script
+            owner={{ deployer_user }}
+            group={{ deployer_group }}
+            mode=0755
+  tags: deploy
+  become: yes
+
+- cron: 
+    name: "Database Update"
+    user: "{{ deployer_user }}"
+    minute: "30"
+    job: "{{ management_command_dir }}/management_command_script"
