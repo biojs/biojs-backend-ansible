@@ -3,6 +3,6 @@
 ##
 - name: apply common configuration to server
   hosts: all
-  user: root
+  user: ubuntu
   roles:
     - common

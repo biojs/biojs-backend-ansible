@@ -26,7 +26,7 @@ venv_dir: "/home/{{deployer_user}}/live/biojsenv"  # recommended
 venv_python: '{{ venv_dir }}/bin/python'
 requirements_file: "{{ app_dir }}/requirements.txt"
 # Remote Server Details
-server_ip: <Change_Server_IP>
+server_ip: 43.240.99.113
 wsgi_server_port: 8000
 
 
