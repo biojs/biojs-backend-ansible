@@ -28,8 +28,9 @@
   become: yes
 
 - name: Install npm packages for frontend
-  npm:
-    path: "{{ frontend_remote_dir }}"
+  command: npm install
+  args:
+    chdir: "{{ frontend_remote_dir }}"
 
 - name: npm build
   command: npm run build
