@@ -1,4 +1,4 @@
 #!/bin/bash
-cd {{ app_dir }}
+cd {{ backend_remote_dir }}
 source {{ venv_dir }}/bin/activate
 python manage.py updatecomponents

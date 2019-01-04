@@ -7,7 +7,7 @@
     - postgresql
     - postgresql-contrib
     - python-psycopg2
-    
+
 - name: Start and enable postgres
   service: name=postgresql enabled=yes state=started
   become: yes
@@ -19,10 +19,11 @@
 
 - name: Configure a new postgresql user
   postgresql_user: db={{ db_name }}
-                                name={{ db_user }}
-                                password={{ db_password }}
-                                priv=ALL
-                                role_attr_flags=NOSUPERUSER
+                name={{ db_user }}
+                password={{ db_password }}
+                priv=ALL
+                role_attr_flags=NOSUPERUSER
+                encrypted=yes
   become: yes
   become_user: postgres
   notify:

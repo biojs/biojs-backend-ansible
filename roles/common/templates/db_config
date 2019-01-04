@@ -3,4 +3,4 @@ GITHUB_CLIENT_SECRET = '{{ GITHUB_CLIENT_SECRET }}'
 DATABASE_NAME = '{{ db_name }}'
 DATABASE_USERNAME = '{{ db_user }}'
 DATABASE_PASSWORD = '{{ db_password }}'
-DEBUG = False
+DEBUG = True

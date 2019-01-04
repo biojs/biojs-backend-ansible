@@ -1,0 +1,76 @@
+# App Name
+app_name: biojs-registry
+
+# Deployer User and Groups
+deployer_user: ubuntu
+deployer_group: ubuntu
+
+# SSH Keys Directory
+ssh_dir: ~/.ssh
+
+# Repository URLs
+backend_repository_url: https://github.com/biojs/biojs-backend
+frontend_repository_url: https://github.com/biojs/biojs-frontend
+builder_repository_url: https://github.com/biojs/biojs-component-builder
+
+# Repository branches
+backend_repository_branch: production
+frontend_repository_branch: production
+builder_repository_branch: production
+
+# Remote directories
+
+backend_remote_dir: "/home/{{deployer_user}}/live/biojs-backend"
+backend_remote_deploy_dir: '{{ backend_remote_dir }}/deploy'
+frontend_remote_dir: "/home/{{deployer_user}}/live/biojs-frontend"
+builder_remote_dir: "/home/{{deployer_user}}/live/biojs-component-builder"
+cron_remote_dir: "/home/{{deployer_user}}/live/cron"
+
+# DB Configuration
+db_url: postgresql://{{deployer_user}}:{{db_password}}@localhost/{{app_name}}
+db_password: "{{ lookup('env', 'DB_PASSWORD') }}"
+db_name: "biojsmain"
+db_user: "{{ lookup('env', 'DB_USER') }}"
+
+# Python environment
+venv_dir: "/home/{{deployer_user}}/live/biojsenv"
+venv_python: '{{ venv_dir }}/bin/python'
+requirements_file: "{{ backend_remote_dir }}/requirements.txt"
+
+# Django Settings
+django_wsgi_module: biojs.wsgi
+django_settings_module: biojs.settings
+database_url: '{{ db_url }}'
+wsgi_server_port: 8000
+django_project_name: biojs
+GITHUB_CLIENT_ID: "{{ lookup('env', 'GITHUB_CLIENT_ID') }}"
+GITHUB_CLIENT_SECRET: "{{ lookup('env', 'GITHUB_CLIENT_SECRET') }}"
+
+# Gunicorn Settings
+base_project_name: biojs
+application_log_dir: "{{ venv_dir }}/logs"
+application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
+gunicorn_wsgi_module: "{{ base_project_name }}.wsgi"
+gunicorn_settings_module: "{{ base_project_name }}.settings"
+gunicorn_user: "{{ deployer_user }}"    # Can be changed
+gunicorn_group: "{{ deployer_group }}"  # Can be changed
+
+# Nginx settings.
+nginx_app_name: biojs_backend
+nginx_access_log_file: "{{ application_log_dir }}/nginx_access.log"
+nginx_error_log_file: "{{ application_log_dir }}/nginx_error.log"
+nginx_static_dir: "{{ backend_remote_dir }}/static/"
+nginx_media_dir: "{{ backend_remote_dir }}/media/"
+hostname: "biojs.net"     # domain name if required
+secondary_hostname: "www.biojs.net"          # www.hostname in case if hostname is a domain and not an IP
+
+# Certbot Settings
+nginx_use_letsencrypt: no   # Yes if SSL certificate is required.
+nginx_strong_dh_group: no   # Yes recommended with SSL
+certbot_auto_renew: yes
+certbot_admin_email: dschw89@gmail.com  # Email for certificate authentication
+certbot_script: /opt/certbot-auto
+certbot_output_dir: "/etc/letsencrypt/live/{{ hostname }}"
+letsencrypt_dir: "/etc/letsencrypt/live/{{ hostname }}"
+letsencrypt_cert_filename: fullchain.pem
+letsencrypt_privkey_filename: privkey.pem

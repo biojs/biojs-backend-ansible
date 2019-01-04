@@ -2,7 +2,7 @@
 # This playbook deploys the whole app stack
 ##
 - name: apply common configuration to server
-  hosts: all
+  hosts: dev
   user: ubuntu
   roles:
     - common

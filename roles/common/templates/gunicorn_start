@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NAME='{{ app_name }}'                                  # Name of the application
-DJANGODIR={{ app_dir }}             # Django project directory
+DJANGODIR={{ backend_remote_dir }}             # Django project directory
 SOCKFILE={{ venv_dir }}/run/gunicorn.sock  # we will communicte using this unix soc$
 USER={{ gunicorn_user }}                                        # the user to run as
 GROUP={{ gunicorn_group }}                                     # the group to run as

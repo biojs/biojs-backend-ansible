@@ -1,0 +1,37 @@
+# Clone frontend code repository, install npm dependencie
+- name: Clone or pull the latest code
+  git:
+    repo: "{{ frontend_repository_url }}"
+    dest: "{{ frontend_remote_dir }}"
+    version: "{{ frontend_repository_branch }}"
+    force: yes
+
+- name: Create DB_Config.js file
+  template: src=JS_DB_Config dest="{{ frontend_remote_dir }}/src/DB_CONFIG.js"
+  when: not (nginx_use_letsencrypt is defined and nginx_use_letsencrypt)
+
+- name: Create DB_Config.js file (SSL)
+  template: src=JS_DB_Config_ssl dest="{{ frontend_remote_dir }}/src/DB_CONFIG.js"
+  when: nginx_use_letsencrypt is defined and nginx_use_letsencrypt
+
+- name: Run the script
+  shell: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+  become: yes
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Install Node.js from the distributions repository
+  apt: name=nodejs state=latest
+  become: yes
+
+- name: Install npm packages for frontend
+  npm:
+    path: "{{ frontend_remote_dir }}"
+
+- name: npm build
+  command: npm run build
+  args:
+    chdir: "{{ frontend_remote_dir }}"

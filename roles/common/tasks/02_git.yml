@@ -5,5 +5,7 @@
   become: yes
 
 - name: Clone or pull the latest code
-  git: repo={{ code_repository_url }}
-        dest={{ app_dir }}
+  git:
+    repo: "{{ backend_repository_url }}"
+    dest: "{{ backend_remote_dir }}"
+    version: "{{ backend_repository_branch }}"

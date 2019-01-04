@@ -1,7 +1,7 @@
 # Create the virtualenv and install the dependencies
 
 - name: Create the virtualenv
-  command: virtualenv -p {{ virtualenv_python_version }} {{ venv_dir }}
+  command: virtualenv -p python {{ venv_dir }}
           creates={{ venv_dir }}/bin/activate
 
 - name: Ensure gunicorn and pycurl are installed in the virtualenv
