@@ -23,7 +23,9 @@ test -d $RUNDIR || mkdir -p $RUNDIR
 
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use --$
-exec {{ venv_dir }}/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+exec env GITHUB_CLIENT_ID="{{ GITHUB_CLIENT_ID }}" \
+  GITHUB_CLIENT_SECRET="{{ GITHUB_CLIENT_SECRET }}" \
+  {{ venv_dir }}/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
   --name $NAME \
   --workers $NUM_WORKERS \
   --user=$USER --group=$GROUP \
