@@ -3,6 +3,7 @@
 - name: Ensure that a strong Diffie-Hellman group is used
   command: openssl dhparam -out /etc/ssl/certs/dhparams.pem 2048 creates=/etc/ssl/certs/dhparams.pem
   when: nginx_strong_dh_group is defined and nginx_strong_dh_group
+  become: yes
 
 - name: Download certbot
   get_url: url=https://dl.eff.org/certbot-auto dest={{ certbot_script }} mode=0755
