@@ -10,5 +10,5 @@
 - include: 06_01_frontend.yml
 - include: 07_nginx.yml
 - include: 08_supervisorctl.yml
-# - include: 09_certbot.yml
+- include: 09_certbot.yml
 - include: 10_cron.yml
