@@ -67,8 +67,8 @@ hostname: "biojs.net"     # domain name if required
 secondary_hostname: "www.biojs.net"          # www.hostname in case if hostname is a domain and not an IP
 
 # Certbot Settings
-nginx_use_letsencrypt: no   # Yes if SSL certificate is required.
-nginx_strong_dh_group: no   # Yes recommended with SSL
+nginx_use_letsencrypt: yes   # Yes if SSL certificate is required.
+nginx_strong_dh_group: yes   # Yes recommended with SSL
 certbot_auto_renew: yes
 certbot_admin_email: dschw89@gmail.com  # Email for certificate authentication
 certbot_script: /opt/certbot-auto
