@@ -1,5 +1,10 @@
 #install packages required for the deployment
 
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: yes
+
 - name: Install required packages
   apt: name={{item}} state=latest
   become: yes
