@@ -8,7 +8,7 @@
 - include: 05_migrations.yml
 - include: 06_gunicorn.yml
 - include: 06_01_frontend.yml
-- include: 07_nginx.yml
-- include: 08_supervisorctl.yml
-- include: 09_certbot.yml
+- include: 07_certbot.yml
+- include: 08_nginx.yml
+- include: 09_supervisorctl.yml
 - include: 10_cron.yml

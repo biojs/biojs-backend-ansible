@@ -3,10 +3,14 @@
 - name: Set up nginx config
   apt: name=nginx state=latest
   become: yes
+  tags:
+    - test
 
 - name: Write nginx conf file
   template: src=nginx.conf dest=/etc/nginx/sites-available/{{ hostname }}
   become: yes
+  tags:
+    - test
   notify:
     - restart nginx
   when: not (nginx_use_letsencrypt is defined and nginx_use_letsencrypt)
@@ -14,6 +18,8 @@
 - name: Write nginx conf file
   template: src=nginx_ssl.conf dest=/etc/nginx/sites-available/{{ hostname }}
   become: yes
+  tags:
+    - test
   notify:
     - restart nginx
   when: nginx_use_letsencrypt is defined and nginx_use_letsencrypt
@@ -23,8 +29,12 @@
         dest=/etc/nginx/sites-enabled/{{ hostname }}
         state=link
   become: yes
+  tags:
+    - test
   notify: restart nginx
 
 - name: Ensure Nginx service is started
   service: name=nginx state=started enabled=yes
   become: yes
+  tags:
+    - test

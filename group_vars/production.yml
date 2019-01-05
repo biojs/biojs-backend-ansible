@@ -73,6 +73,5 @@ certbot_auto_renew: yes
 certbot_admin_email: dschw89@gmail.com  # Email for certificate authentication
 certbot_script: /opt/certbot-auto
 certbot_output_dir: "/etc/letsencrypt/live/{{ hostname }}"
-letsencrypt_dir: "/etc/letsencrypt/live/{{ hostname }}"
 letsencrypt_cert_filename: fullchain.pem
 letsencrypt_privkey_filename: privkey.pem
