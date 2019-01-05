@@ -1,6 +1,8 @@
 # App Name
 app_name: biojs-registry
 
+debug: False
+
 # Deployer User and Groups
 deployer_user: ubuntu
 deployer_group: ubuntu

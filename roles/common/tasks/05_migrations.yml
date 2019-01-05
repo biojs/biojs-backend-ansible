@@ -2,7 +2,7 @@
 
 - name: Write database conf file
   template: src=db_config dest="{{ backend_remote_dir }}/{{ django_project_name }}/config.py"
-  become: yes
+#   become: yes
   notify:
     - restart nginx
     - restart application
