@@ -8,6 +8,7 @@
 - name: Download certbot
   get_url: url=https://dl.eff.org/certbot-auto dest={{ certbot_script }} mode=0755
   when: nginx_use_letsencrypt is defined and nginx_use_letsencrypt
+  become: yes
 
 - name: Check if Nginx exists
   stat: path=/etc/init.d/nginx
