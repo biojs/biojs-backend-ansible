@@ -6,7 +6,7 @@ services:
 jobs:
   include:
   - stage: deploy-dev
-    if: branch = master
+    if: branch = master AND type = push
     before_script:
     - docker pull philm/ansible_playbook
     - openssl aes-256-cbc -K $encrypted_276c776368d5_key -iv $encrypted_276c776368d5_iv
@@ -17,7 +17,7 @@ jobs:
       -e GITHUB_CLIENT_ID=$GITHUB_CLIENT_ID philm/ansible_playbook dev-deploy.yml
       --private-key=~/.ssh/id_rsa -u ubuntu -i dev_hosts
   - stage: deploy-production
-    if: branch = production
+    if: branch = production AND type = push
     before_script:
     - docker pull philm/ansible_playbook
     - openssl aes-256-cbc -K $encrypted_276c776368d5_key -iv $encrypted_276c776368d5_iv
